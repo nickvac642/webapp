@@ -1,0 +1,25 @@
+{
+  "name": "webapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+      "build": "babel src -d dist",
+      "start": "npm run build && node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickvac642/webapp.git"
+  },
+  "author": "Nick Vaccarello",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nickvac642/webapp/issues"
+  },
+  "homepage": "https://github.com/nickvac642/webapp#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "express": "^4.16.4"
+  }
+}
