@@ -4,9 +4,10 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
-    "react-scripts": "2.1.5"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "2.1.5",
+    "reactstrap": "^7.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -16,6 +17,16 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "eslint.options": {
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true,
+        "modules": true
+      }
+    }
   },
   "browserslist": [
     ">0.2%",
