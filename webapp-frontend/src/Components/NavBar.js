@@ -23,12 +23,6 @@ export default class NavBar extends React.Component {
     };
   }
 
-  componentDidMount() {
-    fetch('api/getUsername')
-      .then(res => res.json())
-      .then(user => this.setState({ username: user.username }));
-  }
-
   toggle() {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen
@@ -36,7 +30,6 @@ export default class NavBar extends React.Component {
   }
 
   render() {
-    const { username } = this.state
     return (
       <div>
         <Navbar color="primary" dark expand="lg">
@@ -52,7 +45,7 @@ export default class NavBar extends React.Component {
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  {username}
+                  nickvac642
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>

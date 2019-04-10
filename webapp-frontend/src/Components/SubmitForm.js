@@ -21,9 +21,19 @@ export default class SubmitForm extends React.Component {
         anonymous: false
     }
   }
-  // submitForm = () => {
-  //   fetch
-  // }
+  submitForm = () => {
+    fetch('/form',{
+       method: 'POST',
+       body: this.body
+    });
+    this.setState({
+      eboard: '',
+      positiveText: '',
+      negativeText: '',
+      commentsText: '',
+      anonymous: false
+    });
+  }
 
   handleOnChange = (event) => {
     this.setState({[event.target.id]: event.target.value})
