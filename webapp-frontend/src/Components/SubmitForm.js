@@ -22,10 +22,17 @@ export default class SubmitForm extends React.Component {
     }
   }
   submitForm = () => {
-    fetch('/form',{
-       method: 'POST',
-       body: this.body
-    });
+    fetch('http://localhost:3000/form',{
+       method: "POST",
+       headers: {
+         'Content-type': 'application/json'
+       },
+       body: JSON.stringify(this.state)
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result)
+      })
     this.setState({
       eboard: '',
       positiveText: '',

@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 
+const FormRouter = express.Router();
 const app = express();
 const port = 5000;
 const mongoose = require('mongoose');
@@ -12,8 +13,10 @@ mongoose.connect(
     "mongodb://impeach:" + 
         process.env.MONGO_PASS + "@tide.csh.rit.edu/impeach-eboardevals?ssl=true",
         {useNewUrlParser: true}
-)
-.catch(err => console.log(err));
+).then( 
+    () => {console.log('Database connected')},
+    err => { console.log('Can not connect to the database - ' + err)}
+);
 
 app.use(cors());
 
@@ -22,7 +25,11 @@ app.get('/users', (req, res) => {
     res.end(JSON.stringify({users: ["nick", "owen", "saucetrey"]}));
 });
 
-app.post('/form', (req, res, next) => {
+app.get('form', (req, res) => {
+    res.setHeader('Content-Type', 'application/json')
+});
+
+FormRouter.route('/form').post(function(req, res) {
     console.warn('it worked');
     const form = new From({
         _id: new mongoose.Types.ObjectId(),
@@ -43,3 +50,4 @@ app.post('/form', (req, res, next) => {
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+module.exports = FormRouter;
