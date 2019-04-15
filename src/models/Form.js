@@ -1,5 +1,3 @@
-const express = require('express');
-const router = express.Router();
 const mongoose = require('mongoose');
 
 const formSchema = mongoose.Schema({
@@ -12,4 +10,4 @@ const formSchema = mongoose.Schema({
 
 });
 
-module.exports = mongoose.model('Form', formSchema);
+module.exports = mongoose.model('Form', formSchema, 'Forms');

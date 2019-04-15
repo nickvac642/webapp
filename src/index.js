@@ -1,17 +1,16 @@
 import express from 'express';
 import cors from 'cors';
 
-const FormRouter = express.Router();
 const app = express();
+const bodyParser = require('body-parser');
 const port = 5000;
 const mongoose = require('mongoose');
 
-const From = require("./models/Form");
+const Form = require('./models/Form');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(
-    "mongodb://impeach:" + 
-        process.env.MONGO_PASS + "@tide.csh.rit.edu/impeach-eboardevals?ssl=true",
+    'mongodb://impeach:s64ywk7zfwq57yw4rdyd29ufh7xmrep9@tide.csh.rit.edu/impeach-eboardevals?ssl=true',
         {useNewUrlParser: true}
 ).then( 
     () => {console.log('Database connected')},
@@ -19,19 +18,14 @@ mongoose.connect(
 );
 
 app.use(cors());
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+app.use(bodyParser.json());
 
-app.get('/users', (req, res) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify({users: ["nick", "owen", "saucetrey"]}));
-});
-
-app.get('form', (req, res) => {
-    res.setHeader('Content-Type', 'application/json')
-});
-
-FormRouter.route('/form').post(function(req, res) {
+app.post('/submit-form', (req, res) => {
     console.warn('it worked');
-    const form = new From({
+    const form = new Form({
         _id: new mongoose.Types.ObjectId(),
         eboard: req.body.eboard,
         positiveText: req.body.positiveText,
@@ -39,15 +33,11 @@ FormRouter.route('/form').post(function(req, res) {
         commentsText: req.body.commentsText,
         anonymous: req.body.anonymous
     });
-    form.save().then(result => {
-        console.log(result);
+    form.save(function(err, form){
+        if(err) return console.error(err);
+        console.log(form + " saved to form collection");
     })
-    .catch(err => console.log(err));
-    res.status(201).json({
-        message: "Handling Post requests to /form",
-        createdFrom: from
-    });
-})
+    res.redirect('/');
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
-module.exports = FormRouter;

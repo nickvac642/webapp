@@ -22,24 +22,7 @@ export default class SubmitForm extends React.Component {
     }
   }
   submitForm = () => {
-    fetch('http://localhost:3000/form',{
-       method: "POST",
-       headers: {
-         'Content-type': 'application/json'
-       },
-       body: JSON.stringify(this.state)
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result)
-      })
-    this.setState({
-      eboard: '',
-      positiveText: '',
-      negativeText: '',
-      commentsText: '',
-      anonymous: false
-    });
+    JSON.stringify(this.state, null, ' ');
   }
 
   handleOnChange = (event) => {
@@ -59,7 +42,7 @@ export default class SubmitForm extends React.Component {
         <Container>
             <Row>
                 <Col sm="12" md={{size: 6, order: 2, offset:3 }}>
-                    <Form>
+                    <Form action="/submit-form" method="POST">
                         <FormGroup>
                             <Label size="lg" for="PositionSelection">Select Position</Label>
                             <Input size="lg" type="select" name="Position" id="eboard" onChange={this.handleOnChange}>
@@ -94,7 +77,7 @@ export default class SubmitForm extends React.Component {
                             Submit Form Anonymously
                             </Label>
                         </FormGroup>
-                        <Button onClick={this.submitForm} color="primary">Submit</Button>
+                        <Button type="submit" onClick={this.submitForm} color="primary">Submit</Button>
                     </Form>
                 </Col>
             </Row>
