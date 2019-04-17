@@ -22,7 +22,7 @@ export default class SubmitForm extends React.Component {
     }
   }
   submitForm = () => {
-    JSON.stringify(this.state, null, ' ');
+    alert(JSON.stringify(this.state, null, ' '));
   }
 
   handleOnChange = (event) => {
@@ -45,7 +45,7 @@ export default class SubmitForm extends React.Component {
                     <Form action="/submit-form" method="POST">
                         <FormGroup>
                             <Label size="lg" for="PositionSelection">Select Position</Label>
-                            <Input size="lg" type="select" name="Position" id="eboard" onChange={this.handleOnChange}>
+                            <Input size="lg" type="select" name="Position" id="eboard" value={this.state.eboard} onChange={this.handleOnChange}>
                             <option>General Concerns</option>
                             <option>Chairman</option>
                             <option>Evals</option>
@@ -68,11 +68,11 @@ export default class SubmitForm extends React.Component {
                         </FormGroup>
                         <FormGroup>
                             <Label size="lg" for="additionalCommentsText">Additional Comments?</Label>
-                            <Input type="textarea" name="comments" id="commentsText" onChange={this.handleOnChange}/>
+                            <Input type="textarea" name="Comments" id="commentsText" onChange={this.handleOnChange}/>
                         </FormGroup>
                         <FormGroup check>
                             <Label size="lg" check>
-                            <Input type="checkbox" id="anonymous" onChange={this.handleOnCheck}/>
+                            <Input type="checkbox" name="Anonymous" id="anonymous" onChange={this.handleOnCheck}/>
                             {' '}
                             Submit Form Anonymously
                             </Label>

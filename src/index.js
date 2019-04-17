@@ -24,14 +24,14 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.post('/submit-form', (req, res) => {
-    console.warn('it worked');
+    console.warn('it worked', req.body);
     const form = new Form({
         _id: new mongoose.Types.ObjectId(),
-        eboard: req.body.eboard,
-        positiveText: req.body.positiveText,
-        negativeText: req.body.negativeText,
-        commentsText: req.body.commentsText,
-        anonymous: req.body.anonymous
+        eboard: req.body.Position,
+        positiveText: req.body.Positive,
+        negativeText: req.body.Negative,
+        commentsText: req.body.Comments,
+        anonymous: req.body.Anonymous
     });
     form.save(function(err, form){
         if(err) return console.error(err);

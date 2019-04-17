@@ -6,7 +6,7 @@ const formSchema = mongoose.Schema({
     positiveText: String,
     negativeText: String,
     commentsText: String,
-    anonymous: Boolean
+    anonymous: String
 
 });
 
