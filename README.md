@@ -1,5 +1,5 @@
 # webapp: EboardEvals
-Fullstack EboardEvals webapp for CSH@RIT. To run, clone repository and naviagte to the correspndin directories and run the following:
+Fullstack EboardEvals webapp for CSH@RIT. To run, clone repository and naviagte to the corresponding directories and run the following:
 
 Run **npm start** in Webapp directory for starting server side at localhost:5000.
 
