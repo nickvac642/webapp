@@ -79,7 +79,7 @@ export default class SubmitForm extends React.Component {
                         </FormGroup>
                         <Button type="submit" onClick={this.submitForm} color="primary">Submit</Button>
                     </Form>
-                </Col>
+                </Col>  
             </Row>
         </Container>        
       </div>
